@@ -1,9 +1,30 @@
-import { viz } from './viz.js';
+import './style.css';
+import { viz as originalViz } from './viz.js';
 
-viz('#app');
+let state = {};
+let viz = originalViz;
+
+const container = document.querySelector('#app');
+
+const render = () => {
+  viz(container, {
+    state,
+    setState,
+  });
+};
+
+const setState = (next) => {
+  state = next(state);
+  render();
+};
+
+render();
 
 if (import.meta.hot) {
   import.meta.hot.accept('./viz.js', (newViz) => {
-    newViz?.viz('#app');
+    if (newViz) {
+      viz = newViz.viz;
+      render();
+    }
   });
 }
