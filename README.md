@@ -1,6 +1,8 @@
 # vite-d3-template
 Vite Hot Reloading Template for D3
 
+See also the [video of this being created](https://www.youtube.com/watch?v=jqOQy4BEnqU).
+
 Progression:
  1. [Initial hot reloading example](https://github.com/curran/vite-d3-template/pull/1)
  2. [Mouse follower](https://github.com/curran/vite-d3-template/pull/3)
