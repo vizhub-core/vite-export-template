@@ -8,16 +8,16 @@ import { hcl } from 'd3-color';
 // Try editing the values of h, c, and l.
 // In VZCode, hold down the ALT key while
 // dragging the mouse to change the values.
-const h = 274;
-const c = 232;
-const l = 31;
+const h = 282;
+const c = 327;
+const l = -17;
 const color = hcl(h, c, l);
 
 // Define the transition duration (milliseconds)
 const transitionDuration = 200;
 
 // Radius of the circle
-const radius = 124;
+const radius = 100;
 
 export const viz = (container, { state, setState }) => {
   // Set the initial x, y
