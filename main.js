@@ -1,5 +1,5 @@
 import './style.css';
-import { viz as originalViz } from './viz.js';
+import { viz as originalViz } from './viz';
 
 let state = {};
 let viz = originalViz;
