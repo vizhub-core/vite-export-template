@@ -1,5 +1,5 @@
 import './style.css';
-import { viz as originalViz } from './viz';
+import { viz as originalViz } from './viz/index.js';
 
 let state = {};
 let viz = originalViz;
@@ -21,7 +21,7 @@ const setState = (next) => {
 render();
 
 if (import.meta.hot) {
-  import.meta.hot.accept('./viz.js', (newViz) => {
+  import.meta.hot.accept('./viz/index.js', (newViz) => {
     if (newViz) {
       viz = newViz.viz;
       render();
