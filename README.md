@@ -13,6 +13,9 @@ git clone https://github.com/curran/vite-d3-template.git
 cd vite-d3-template
 npm install
 npm run dev
+
+# in a new terminal tab, to open the editor with the Alt+drag feature:
+npm run edit
 ```
 
 When you save a source file (in particular `viz.js` or anything it imports), hot reloading should be working (not refreshing the page, but rather running the new code into the context of the existing DOM elements and state).
