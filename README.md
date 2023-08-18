@@ -4,6 +4,7 @@ Vite Hot Reloading Template for D3
 Progression:
  1. [Initial hot reloading example](https://github.com/curran/vite-d3-template/pull/1)
  2. [Mouse follower](https://github.com/curran/vite-d3-template/pull/3)
+ 3. [Adopt VZCode](https://github.com/curran/vite-d3-template/pull/4)
 
 To run locally:
 
