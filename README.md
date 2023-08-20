@@ -22,4 +22,4 @@ When you save a source file (in particular `viz.js` or anything it imports), hot
 
 Inspired by [Bret Victor - Inventing on Principle](https://www.youtube.com/watch?v=PUv66718DII).
 
-See also the [video of this being created](https://www.youtube.com/watch?v=jqOQy4BEnqU) - will premiere August 18 as part of this [Meetup: D3 and Hot Reloading with Vite](https://www.meetup.com/d3-online/events/295248035/).
+See also the [video of this being created](https://www.youtube.com/watch?v=jqOQy4BEnqU).
