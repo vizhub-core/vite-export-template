@@ -2,3 +2,6 @@ body {
   margin: 0;
   overflow: hidden;
 }
+.viz-container {
+  height: 100vh;
+}
