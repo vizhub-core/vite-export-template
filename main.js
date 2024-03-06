@@ -1,13 +1,16 @@
 import './style.css';
-import { viz as originalViz } from './viz/index.js';
+import { main as originalMain } from './viz/index.js';
 
+// Implement a simple state management system
+// compatible with VizHub.
+// See https://vizhub.com/curran/blank-slate
 let state = {};
-let viz = originalViz;
+let main = originalMain;
 
-const container = document.querySelector('#app');
+const container = document.querySelector('.viz-container');
 
 const render = () => {
-  viz(container, {
+  main(container, {
     state,
     setState,
   });
@@ -20,10 +23,12 @@ const setState = (next) => {
 
 render();
 
+// Support hot module replacement with Vite
+// See https://vitejs.dev/guide/api-hmr.html#hot-accept
 if (import.meta.hot) {
-  import.meta.hot.accept('./viz/index.js', (newViz) => {
-    if (newViz) {
-      viz = newViz.viz;
+  import.meta.hot.accept('./viz/index.js', (newModule) => {
+    if (newModule) {
+      main = newModule.main;
       render();
     }
   });
