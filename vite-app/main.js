@@ -1,5 +1,5 @@
 import './style.css';
-import { main as originalMain } from './viz/index.js';
+import { main as originalMain } from '@curran/parallel-coordinates-brushing-prototype';
 
 // Implement a simple state management system
 // compatible with VizHub.
@@ -26,10 +26,14 @@ render();
 // Support hot module replacement with Vite
 // See https://vitejs.dev/guide/api-hmr.html#hot-accept
 if (import.meta.hot) {
-  import.meta.hot.accept('./viz/index.js', (newModule) => {
-    if (newModule) {
-      main = newModule.main;
-      render();
+  import.meta.hot.accept(
+    '@curran/parallel-coordinates-brushing-prototype',
+    (newModule) => {
+      console.log('got new module');
+      if (newModule) {
+        main = newModule.main;
+        render();
+      }
     }
-  });
+  );
 }
