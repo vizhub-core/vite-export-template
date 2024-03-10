@@ -10,7 +10,7 @@ The example viz that is exported here is [Parallel Coordinates Brushing Prototyp
 
  * Importing across vizzes/packages (e.g. `import { observeResize } from '@curran/responsive-axes';`)
  * Importing from CSV files (e.g. `import data from './data.csv';`)
- * Responsiveness by measureing the parent `div` with ResizeObserver
+ * Responsiveness by measuring the parent `div` with ResizeObserver
 
 ## Usage
 
