@@ -1,6 +1,8 @@
 # vite-export-template
 
-Vite Hot Reloading Template for VizHub
+Vite for VizHub exports
+
+If you are using VizHub with [hot reloading](https://vizhub.com/forum/t/hot-reloading-and-interactive-widgets/968), you can use this template to "eject" out of VizHub and develop locally.
 
 ![image](https://github.com/vizhub-core/vite-export-template/assets/68416/8e6c3e96-d7d5-4fcb-bb7e-64c57a814bee)
 
@@ -12,11 +14,11 @@ The example viz that is exported here is [Parallel Coordinates Brushing Prototyp
 
 ## Usage
 
-If you are using VizHub with [hot reloading](https://vizhub.com/forum/t/hot-reloading-and-interactive-widgets/968), you can use this template to "eject" out of VizHub and develop locally. Here's how:
+To adapt this template to work with your own viz:
 
- * Use VizHub's export API to download the code for your viz (and its transitive dependencies)
- * Unzip the files into the `vizhub-exports` subdirectory of this project
- * Update the NPM workspaces in `package.json` to match your vizzes
+ * Update the `vizhub-download` script to point to your viz
+ * Run the `vizhub-pull` script whenever you want to get the latest out of VizHub
+ * Update the NPM workspaces listed in `package.json` to match your vizzes
  * Update the imports in `main` to point to your entry point
 
 To run locally:
@@ -29,11 +31,6 @@ npm run dev
 ```
 
 If it worked correctly, you should see your running viz appear! 
-
-Once it's working, you can automate updates from VizHub by:
-
- * Updating the `vizhub-download` script to point to your viz
- * Running the `vizhub-pull` script whenever you want to get the latest out of VizHub
 
 This setup uses NPM workspaces, so the import syntax in VizHub works "out of the box" with no need for modification. You get a standard Vite project, so you can use the Vite build system to generate static assets for hosting.
 
