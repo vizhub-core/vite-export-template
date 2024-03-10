@@ -2,6 +2,14 @@
 
 Vite Hot Reloading Template for VizHub
 
+![image](https://github.com/vizhub-core/vite-export-template/assets/68416/8e6c3e96-d7d5-4fcb-bb7e-64c57a814bee)
+
+The example viz that is exported here is [Parallel Coordinates Brushing Prototype](https://vizhub.com/curran/b4a29bfa02bd42c3acb44789a39cfb7b). This example was chosen because it leverages the following features of VizHub that need to be reproduced using Vite and NPM workspaces:
+
+ * Importing across vizzes/packages (e.g. `import { observeResize } from '@curran/responsive-axes';`)
+ * Importing from CSV files (e.g. `import data from './data.csv';`)
+ * Responsiveness by measureing the parent `div` with ResizeObserver
+
 ## Usage
 
 If you are using VizHub with [hot reloading](https://vizhub.com/forum/t/hot-reloading-and-interactive-widgets/968), you can use this template to "eject" out of VizHub and develop locally. Here's how:
