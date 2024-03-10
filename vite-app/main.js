@@ -1,5 +1,5 @@
 import './style.css';
-import { main as originalMain } from './viz/index.js';
+import { main as originalMain } from '@curran/parallel-coordinates-brushing-prototype';
 
 // Implement a simple state management system
 // compatible with VizHub.

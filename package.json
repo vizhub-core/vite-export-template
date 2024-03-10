@@ -1,23 +1,11 @@
 {
-  "name": "vite-d3-template",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "edit": "cd viz; vzcode"
+    "dev": "cd vite-app; npm run dev"
   },
-  "devDependencies": {
-    "vite": "^5.1.5",
-    "vzcode": "^0.72.0"
-  },
-  "dependencies": {
-    "d3": "^7.8.5",
-    "d3-color": "^3.1.0",
-    "d3-ease": "^3.0.1",
-    "d3-selection": "^3.0.0",
-    "d3-transition": "^3.0.1"
-  }
+  "workspaces": [
+    "vite-app",
+    "vizhub-exports/curran/iris-dataset",
+    "vizhub-exports/curran/parallel-coordinates-brushing-prototype",
+    "vizhub-exports/curran/responsive-axes"
+  ]
 }
