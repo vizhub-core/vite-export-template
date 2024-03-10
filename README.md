@@ -4,7 +4,7 @@ Vite for VizHub exports
 
 If you are using VizHub with [hot reloading](https://vizhub.com/forum/t/hot-reloading-and-interactive-widgets/968), you can use this template to "eject" out of VizHub and develop locally.
 
-![image](https://github.com/vizhub-core/vite-export-template/assets/68416/8e6c3e96-d7d5-4fcb-bb7e-64c57a814bee)
+[![image](https://github.com/vizhub-core/vite-export-template/assets/68416/8e6c3e96-d7d5-4fcb-bb7e-64c57a814bee)](https://vizhub.com/curran/b4a29bfa02bd42c3acb44789a39cfb7b)
 
 The example viz that is exported here is [Parallel Coordinates Brushing Prototype](https://vizhub.com/curran/b4a29bfa02bd42c3acb44789a39cfb7b). This example was chosen because it leverages the following features of VizHub that need to be reproduced using Vite and NPM workspaces:
 
