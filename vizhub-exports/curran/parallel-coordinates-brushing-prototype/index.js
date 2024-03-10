@@ -12,10 +12,10 @@ import {
   extent,
   line,
   brushY,
-} from "d3";
-import { data } from "@curran/iris-dataset";
-import { observeResize } from "@curran/responsive-axes";
-import { parallelCoordinates } from "./parallelCoordinates";
+} from 'd3';
+import { data } from '@curran/iris-dataset';
+import { observeResize } from '@curran/responsive-axes';
+import { parallelCoordinates } from './parallelCoordinates';
 
 // Assign d.id to the index.
 data.forEach((d, i) => {
@@ -23,18 +23,18 @@ data.forEach((d, i) => {
 });
 
 const columns = [
-  "sepal_length",
-  "sepal_width",
-  "petal_length",
-  "petal_width",
-  "species",
+  'sepal_length',
+  'sepal_width',
+  'petal_length',
+  'petal_width',
+  'species',
 ];
 const columnTypes = {
-  sepal_length: "quantitative",
-  sepal_width: "quantitative",
-  petal_length: "quantitative",
-  petal_width: "quantitative",
-  species: "categorical",
+  sepal_length: 'quantitative',
+  sepal_width: 'quantitative',
+  petal_length: 'quantitative',
+  petal_width: 'quantitative',
+  species: 'categorical',
 };
 const colorValue = (d) => d.species;
 const idValue = (d) => d.id;
@@ -51,12 +51,13 @@ export const main = (container, { state, setState }) => {
   const { width, height } = dimensions;
 
   select(container)
-    .selectAll("svg")
+    .selectAll('svg')
     .data([null])
-    .join("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .style("background", "black")
+    .join('svg')
+    .attr('width', width)
+    .attr('height', height)
+    .style('background', '#090F10')
+
     .call(parallelCoordinates, {
       data,
       columns,

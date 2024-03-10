@@ -10,6 +10,7 @@ import {
   brushY,
   easeLinear,
   hcl,
+  axisBottom,
 } from 'd3';
 import { memoize } from './memoize';
 
@@ -34,11 +35,15 @@ export const parallelCoordinates = (
     brushWidth = 50,
     brushedIntervals,
     updateBrushedInterval,
+    marginTop = 30,
+    marginRight = 50,
+    marginBottom = 50,
+    marginLeft = 63,
   },
 ) => {
   const xScale = scalePoint()
     .domain(columns)
-    .range([0, width]);
+    .range([marginLeft, width - marginRight]);
 
   const yScales = {};
   for (const column of columns) {
@@ -46,10 +51,10 @@ export const parallelCoordinates = (
       columnTypes[column] === 'quantitative'
         ? scaleLinear()
             .domain(extent(data, (d) => d[column]))
-            .range([height, 0])
+            .range([height - marginBottom, marginTop])
         : scalePoint()
             .domain(data.map((d) => d[column]))
-            .range([height, 0]);
+            .range([height - marginBottom, marginTop]);
   }
 
   const colorScale = scaleOrdinal()
@@ -80,16 +85,15 @@ export const parallelCoordinates = (
     [data, columns, brushedIntervals],
     selection.node(),
   );
-
   const t = transition().duration(500).ease(easeLinear);
-
   selection
-    .selectAll('path')
+    .selectAll('path.mark')
     .data(filteredData, idValue)
     .join(
       (enter) =>
         enter
           .append('path')
+          .attr('class', 'mark')
           .attr('opacity', 0)
           .call((enter) =>
             enter.transition(t).attr('opacity', 1),
@@ -105,7 +109,10 @@ export const parallelCoordinates = (
     )
     .attr('fill', 'none')
     .attr('stroke', (d) => colorScale(colorValue(d)))
+    .attr('stroke-width', 16 / 10)
+    .attr('stroke-linejoin', 'round')
     .style('pointer-events', 'none')
+    .style('mix-blend-mode', 'screen')
     .attr('d', (d) =>
       lineGenerator(
         columns.map((column) => [
@@ -139,9 +146,10 @@ export const parallelCoordinates = (
     );
 
   selection
-    .selectAll('g')
+    .selectAll('g.brush')
     .data(columns)
     .join('g')
+    .attr('class', 'brush')
     .attr(
       'transform',
       (column) => `translate(${xScale(column)}, 0)`,
@@ -157,5 +165,27 @@ export const parallelCoordinates = (
           brushedIntervals[column].map(yScales[column]),
         );
       }
+    });
+
+  // Add an X axis
+  selection
+    .selectAll('g.x-axis')
+    .data([null])
+    .join('g')
+    .attr('class', 'x-axis')
+    .attr(
+      'transform',
+      `translate(0,${height - marginBottom})`,
+    )
+    .style('color', '#A8A8A8')
+    .style('font-size', 18)
+    .call(
+      axisBottom(xScale)
+        .tickFormat((str) => str.replace('_', ' '))
+        .tickPadding(10),
+    )
+    .call((selection) => {
+      selection.selectAll('line').remove();
+      selection.selectAll('path').remove();
     });
 };
