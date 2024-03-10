@@ -177,7 +177,7 @@ export const parallelCoordinates = (
       'transform',
       `translate(0,${height - marginBottom})`,
     )
-    .style('color', '#A8A8A8')
+    .style('color', '#FFFFFF')
     .style('font-size', 18)
     .call(
       axisBottom(xScale)

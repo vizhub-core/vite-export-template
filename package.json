@@ -1,6 +1,11 @@
 {
   "scripts": {
-    "dev": "cd vite-app; npm run dev"
+    "dev": "cd vite-app; npm run dev",
+    "vizhub-clean": "rm -rf vizhub-exports",
+    "vizhub-download": "curl -o vizhub-exports.zip 'https://vizhub.com/api/export-viz/curran/b4a29bfa02bd42c3acb44789a39cfb7b/vite'",
+    "vizhub-unzip": "unzip -o vizhub-exports.zip",
+    "vizhub-remove-zip": "rm vizhub-exports.zip",
+    "vizhub-pull": "npm run vizhub-clean && npm run vizhub-download && npm run vizhub-unzip && npm run vizhub-remove-zip"
   },
   "workspaces": [
     "vite-app",
