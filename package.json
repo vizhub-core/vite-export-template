@@ -1,6 +1,7 @@
 {
   "scripts": {
     "dev": "cd vite-app; npm run dev",
+    "build": "cd vite-app; npm run build",
     "vizhub-clean": "rm -rf vizhub-exports",
     "vizhub-download": "curl -o vizhub-exports.zip 'https://vizhub.com/api/export-viz/curran/b4a29bfa02bd42c3acb44789a39cfb7b/vite'",
     "vizhub-unzip": "unzip -o vizhub-exports.zip",
@@ -10,7 +11,7 @@
   "workspaces": [
     "vite-app",
     "vizhub-exports/curran/iris-dataset",
-    "vizhub-exports/curran/parallel-coordinates-brushing-prototype",
+    "vizhub-exports/curran/parallel-coordinates-with-brushing",
     "vizhub-exports/curran/responsive-axes"
   ]
 }
