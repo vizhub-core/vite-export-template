@@ -18,6 +18,7 @@ import { observeResize } from '@curran/responsive-axes';
 import { parallelCoordinates } from './parallelCoordinates';
 
 // Assign d.id to the index.
+// This is used later for object constancy in transitions.
 data.forEach((d, i) => {
   d.id = i;
 });
@@ -40,41 +41,60 @@ const colorValue = (d) => d.species;
 const idValue = (d) => d.id;
 
 export const main = (container, { state, setState }) => {
+  // Initialize dimensions by observing resise.
   const dimensions = observeResize({
     state,
     setState,
     container,
   });
-
   if (dimensions === null) return;
-
   const { width, height } = dimensions;
 
-  select(container)
+  // Initialize the brushed intervals state to an empty object.
+  if (!state.brushedIntervals) {
+    setState((state) => ({
+      ...state,
+      brushedIntervals: {},
+    }));
+    return;
+  }
+  const { brushedIntervals } = state;
+
+  // Updates the brushed intervals when brushes change.
+  const updateBrushedInterval = ({ column, interval }) => {
+    setState((state) => ({
+      ...state,
+      brushedIntervals: {
+        ...state.brushedIntervals,
+        [column]: interval,
+      },
+    }));
+  };
+
+  // Use this to inspect the brushedIntervals as they change!
+  // console.log(
+  //   JSON.stringify(brushedIntervals, null, 2),
+  // );
+
+  // Set up the SVG.
+  const svg = select(container)
     .selectAll('svg')
     .data([null])
     .join('svg')
     .attr('width', width)
     .attr('height', height)
-    .style('background', '#090F10')
+    .style('background', '#090F10');
 
-    .call(parallelCoordinates, {
-      data,
-      columns,
-      columnTypes,
-      colorValue,
-      idValue,
-      width,
-      height,
-      brushedIntervals: state.brushedIntervals || {},
-      updateBrushedInterval: ({ column, interval }) => {
-        setState((state) => ({
-          ...state,
-          brushedIntervals: {
-            ...state.brushedIntervals,
-            [column]: interval,
-          },
-        }));
-      },
-    });
+  // Invoke the parallel coordinates.
+  svg.call(parallelCoordinates, {
+    data,
+    columns,
+    columnTypes,
+    colorValue,
+    idValue,
+    width,
+    height,
+    brushedIntervals,
+    updateBrushedInterval,
+  });
 };
