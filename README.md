@@ -36,6 +36,6 @@ This setup uses NPM workspaces, so the import syntax in VizHub works "out of the
 
 ## Motivation
 
-One of the design goals of VizHub is to enable users to author portable code. One of the aspects of VizHub that was initially not portable at all was the "import from viz" feature. This lets users import code and data across vizzes. Now that the VizHub export API includes all imported vizzes in the exported files, and adds the `name` field to the `package.json` of each exported viz, it is finally possible to eject code out of VizHub and into an industry standard project setup using Vite and NPM workspaces.
+One of the design goals of VizHub is to enable users to author portable code. One of the aspects of VizHub that was initially not portable at all was the "import from viz" feature. This lets users import code and data across vizzes. Now that the VizHub export API includes all imported vizzes in the exported files, and adds the `name` field to the `package.json` of each exported viz, it is finally possible to eject code out of VizHub and into an industry standard project setup using Vite and NPM workspaces, even while using the "import from viz" feature of the VizHub platform.
 
 See also the [video of this being created initially](https://www.youtube.com/watch?v=jqOQy4BEnqU).
